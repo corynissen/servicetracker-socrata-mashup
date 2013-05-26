@@ -61,6 +61,6 @@ run <- function(st.number){
   }else{
     new <- st
   }
-  as.WebResult(new, cmd="raw")
+  as.WebResult(toJSON(new), cmd="raw")
 }
 
