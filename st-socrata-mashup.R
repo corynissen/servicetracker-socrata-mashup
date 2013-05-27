@@ -8,7 +8,7 @@
 #st.number <- "13-00421366" # arami go can't find manually on socrata
 #st.number <- "13-00405201" # butterfly sushi can't find manually on socrata
 
-run <- function(st.number){
+run <- function(st.number, json=TRUE){
   st_url <- paste0("http://311api.cityofchicago.org/open311/v2/requests/",
                    st.number, ".json")
   st <- tryCatch(fromJSON(st_url)[[1]], error=function(e)e)
@@ -65,6 +65,10 @@ run <- function(st.number){
       msg <- st
     }
   }
-  as.WebResult(otable(as.data.frame(cbind(names(msg),msg))), cmd="raw")
+  if(json){
+    msg <- toJSON(msg)
+  }else{
+    msg <- otable(as.data.frame(cbind(names(msg),msg)))  
+  as.WebResult(msg, cmd="raw")
 }
 
