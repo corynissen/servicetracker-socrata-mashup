@@ -65,6 +65,6 @@ run <- function(st.number){
       msg <- st
     }
   }
-  as.WebResult(otable(t(as.data.frame(msg))), cmd="raw")
+  as.WebResult(otable(t(as.data.frame(cbind(names(msg),msg)))), cmd="raw")
 }
 
