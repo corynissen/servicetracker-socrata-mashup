@@ -68,7 +68,8 @@ run <- function(st.number, json=TRUE){
   if(json){
     msg <- toJSON(msg)
   }else{
-    msg <- otable(as.data.frame(cbind(names(msg),msg)))  
+    msg <- otable(as.data.frame(cbind(names(msg),msg)))
+  }
   as.WebResult(msg, cmd="raw")
 }
 
