@@ -65,6 +65,6 @@ run <- function(st.number){
       msg <- st
     }
   }
-  as.WebResult(toJSON(msg), cmd="raw")
+  as.WebResult(otable(msg), cmd="raw")
 }
 
