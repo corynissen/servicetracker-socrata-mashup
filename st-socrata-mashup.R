@@ -29,12 +29,12 @@ run <- function(st.number, json=TRUE){
       # try to get the closest one by lat, lon
       soc$latdiff <- abs(soc$latitude - st$lat)
       soc$londiff <- abs(soc$longitude - st$long)
-      latmin <- which.min(soc$latdiff)
-      lonmin <- which.min(soc$londiff)
+      soc$totaldiff <- soc$latdiff + soc$londiff
+      totalmin <- which.min(soc$totaldiff)
 
       # match if lat and lon within some delta & address numbers the same
-      if(soc$latdiff[latmin] < .001 & soc$londiff[lonmin] < .001){
-        candidate <- soc[latmin,]
+      if(soc$totaldiff[totalmin] < .001){
+        candidate <- soc[totalmin,]
       }
 
       # must match numeric part of address to be legit
