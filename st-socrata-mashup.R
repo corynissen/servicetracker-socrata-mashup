@@ -69,6 +69,8 @@ run <- function(st.number, json=TRUE){
   if(tolower(json) %in% c(TRUE, "true", "t")){
     msg <- toJSON(msg)
   }else{
+    # add line breaks to make more readable
+    msg$violations <- gsub("|", "\n", msg$violations)
     msg <- otable(as.data.frame(cbind(names(msg),msg)))
   }
   as.WebResult(msg, cmd="raw")
