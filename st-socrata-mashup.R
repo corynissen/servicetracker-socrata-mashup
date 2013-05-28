@@ -70,7 +70,7 @@ run <- function(st.number, json=TRUE){
     msg <- toJSON(msg)
   }else{
     # add line breaks to make more readable
-    msg$violations <- gsub("\\|", "\n", msg$violations)
+    msg$violations <- gsub("\\|", "<br>", msg$violations)
     msg <- otable(as.data.frame(cbind(names(msg),msg)))
   }
   as.WebResult(msg, cmd="raw")
