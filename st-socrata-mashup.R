@@ -20,7 +20,7 @@ run <- function(st.number, json=TRUE){
     soc_url <- paste0("http://data.cityofchicago.org/resource/4ijn-s7e5.csv?$where=inspection_date%20>=%20'",
                       req.date, "T00:00:00'%20and%20inspection_date%20<=%20'", end.date,
                       "T23:59:59'&$order=inspection_date")
-    soc <- tryCatch(read.csv(soc_url, stringsAsFactors=F), function(e)e)
+    soc <- tryCatch(read.csv(soc_url, stringsAsFactors=F), error=function(e)e)
     if(inherits(soc, "error")){
       msg <- st
     }else{
