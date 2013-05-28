@@ -70,7 +70,7 @@ run <- function(st.number, json=TRUE){
     msg <- toJSON(msg)
   }else{
     # add line breaks to make more readable
-    if(!is.null(msg$violations){
+    if(!is.null(msg$violations)){
       msg$violations <- gsub("\\|", "<br><br>", msg$violations)
     }
     msg <- otable(as.data.frame(cbind(names(msg),msg)))
